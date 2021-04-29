@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
                 Hero Superman = new Hero("Superman", 100, 60);
                 Intent i = new Intent(MainActivity.this, HeroStatsActivity.class);
                 i.putExtra("hero", Superman);
-                startActivity(i);
                 startActivityForResult(i, requestCodeForSupermanStats);
             }
         });
@@ -38,14 +37,13 @@ public class MainActivity extends AppCompatActivity {
                 Hero Batman = new Hero("Batman", 60, 90);
                 Intent i = new Intent(MainActivity.this, HeroStatsActivity.class);
                 i.putExtra("hero", Batman);
-                startActivity(i);
                 startActivityForResult(i, requestCodeForBatmanStats);
             }
         });
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(resultCode == RESULT_OK){

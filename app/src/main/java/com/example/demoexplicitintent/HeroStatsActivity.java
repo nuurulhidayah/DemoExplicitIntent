@@ -20,9 +20,9 @@ public class HeroStatsActivity extends AppCompatActivity {
         Intent i = getIntent();
         Hero hero = (Hero) i.getSerializableExtra("hero");
 
-        tvName = (TextView) findViewById(R.id.textViewName);
-        tvStrength = (TextView) findViewById(R.id.textViewStrength);
-        tvTechnicalProwess = (TextView) findViewById(R.id.textViewTechnicalProwess);
+        tvName = findViewById(R.id.textViewName);
+        tvStrength = findViewById(R.id.textViewStrength);
+        tvTechnicalProwess = findViewById(R.id.textViewTechnicalProwess);
 
         btnLike = findViewById(R.id.buttonLike);
         btnDislike = findViewById(R.id.buttonDislike);
@@ -32,24 +32,30 @@ public class HeroStatsActivity extends AppCompatActivity {
         tvTechnicalProwess.setText("Technical: " + hero.getTechnicalProwess());
 
         btnLike.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View arg0) {
+                // Create intent & pass in String data
                 Intent i = new Intent();
                 i.putExtra("like", "like");
-
+                // Set result to RESULT_OK to indicate normal response and pass in the intent containing the like
                 setResult(RESULT_OK, i);
                 finish();
-            }
-        });
-        btnDislike.setOnClickListener(new View.OnClickListener() {
+            }});
+
+        // When button Dislike is clicked, set the results
+        // accordingly and finish() to close this activity
+        btnDislike.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View arg0) {
+                //Create intent & pass in String data
                 Intent i = new Intent();
                 i.putExtra("like", "dislike");
+                // Set result to RESULT_OK to indicate normal
+                // response and pass in the intent containing the
+                // dislike
                 setResult(RESULT_OK, i);
                 finish();
-            }
-        });
+            }});
+
     }
 }
